@@ -33,26 +33,33 @@ function Payment() {
         getClientSecret();
     }, [basket]);
 
+    console.log('THE SECRET IS >>>', clientSecret);
+
     const stripe = useStripe();
     const elements = useElements();
 
-    const handleSubmit= async (event) => {
+    const handleSubmit= (event) => {
         event.preventDefault();
         setProcessing(true);
 
-        const payload = await stripe.confirmCardPayment(clientSecret, {
+        stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: elements.getElement(CardElement),
             }
-        }).then(({ paymentIntent}) => {
+        }).then((resp) => {
             // paymentIntent = payment confirmation
+            console.log('this is the response',resp);
 
             setSucceeded(true);
             setError(null);
             setProcessing(false);
+            dispatch({
+                type: 'EMPTY_BASKET',
+            })
 
             history.replace('/orders');
         })
+        .catch(e=> console.log(e.message));
 
     }
 
@@ -104,7 +111,7 @@ function Payment() {
 
                     <div className="payment__details">
                         {/* stripe magic will go */}
-
+                        
                         <form onSubmit={handleSubmit}>
                             <CardElement onChange={handleChange}/>
                             <div className="payment__priceContainer">
@@ -121,7 +128,7 @@ function Payment() {
                                 value={getBasketTotal(basket)}  
                                 displayType={"text"}
                                 thousandSeparator={true}
-                                prefix={"$"}
+                                prefix={"Rs"}
                             />
                             <button disabled=
                                 {processing || 
