@@ -1,8 +1,47 @@
-# About the App
-=> Amazon-clone is a MERN stack web application which supports firebase authentication of users, and firebase store for 
-storing data.
-=> It supports basket funtionality of amazon like add to basket, remove from basket, product details, and order details.
-=> It supports full payment functionality using stripe APIs.
+## About the App
+
+**Link to the deployed app :** [Amazon-clone](https://clone-5726e.firebaseapp.com/)
+
+* #### Amazon-clone is MERN stack, Firebase, Stripe build web application with functionalities of Amazon.
+
+* ### Features and functionalities supported by this app are
+    * __Supports Authentication of users using Firebase Authentication__
+    * __Shows the details of the products__
+    * __Add to basket functionality__
+    * __Remoave from basket functionality__
+    * __Full payment process using Stripe API__
+    * __Order details of every user stored in firebase store__
+
+* ### Technology Used
+    * **Frontend : Reactjs, jsx, css. Material-UI, React Context API**
+    * **Backend  : Firebase Auth, Firebase Functions, Firebase Store, Stripe API.**
 
 
-## Run the app in your local machine
+
+## How to run on your local machine
+
+> **Run the following command in the terminal of the directory in which you want to clone the app**
+
+```bash
+    git clone https://github.com/shubham-patel26/amazon-clone.git
+```
+> #### then run the following command to install the dependencies of the project
+```bash
+    npm install
+```
+> #### install Firebase CLI globally by running the command
+```bash
+    sudo npm install -g firebase-tools
+```
+> #### then go to the /functions folder and run the command
+```bash
+    npm install
+
+    # this will start the backend
+    firebase emulators:start 
+```
+
+> #### now go to the project directory and run below command to start the app
+```bash
+    npm start
+```
